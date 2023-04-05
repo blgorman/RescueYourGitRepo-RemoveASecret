@@ -33,7 +33,7 @@ namespace SimpleBlobStorageDemo
             {
                 foreach (var containerItem in containerPage.Values)
                 {
-                    if (containerItem.Name.Equals("notes"))
+                    if (containerItem.Name.Equals(containerName))
                     {
                         exists = true;
                         break;
