@@ -10,7 +10,7 @@ namespace SimpleBlobStorageDemo
     {
         private static IConfigurationRoot _configuration;
 
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             Console.WriteLine("Hello World");
             BuildOptions();
@@ -27,7 +27,9 @@ namespace SimpleBlobStorageDemo
             string containerName = "images_" + Guid.NewGuid().ToString();
 
             // Create the container and return a container client object
-            BlobContainerClient containerClient = await blobServiceClient.CreateBlobContainerAsync(containerName);
+            var containerClient = await blobServiceClient.CreateBlobContainerAsync(containerName);
+
+
         }
 
         private static void BuildOptions()
