@@ -24,7 +24,7 @@ namespace SimpleBlobStorageDemo
             //create a container:
 
             //Create a unique name for the container
-            string containerName = "images_" + Guid.NewGuid().ToString();
+            string containerName = "images-" + Guid.NewGuid().ToString();
 
             // Create the container and return a container client object
             var containerClient = await blobServiceClient.CreateBlobContainerAsync(containerName);
