@@ -16,7 +16,7 @@ namespace SimpleBlobStorageDemo
             BuildOptions();
 
             var storageConnection = _configuration["Storage:ConnectionString"];
-            Console.WriteLine($"Connection: {storageConnection}");
+            //Console.WriteLine($"Connection: {storageConnection}");
 
             // Create a BlobServiceClient object 
             var blobServiceClient = new BlobServiceClient(storageConnection);
