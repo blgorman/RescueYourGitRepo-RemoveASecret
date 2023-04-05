@@ -72,7 +72,7 @@ namespace SimpleBlobStorageDemo
 
             //delete blob
             blobClient = containerClient.GetBlobClient(fileName);
-            blobClient.DeleteIfExists();
+            //blobClient.DeleteIfExists();
 
             //delete container
             //containerClient.DeleteIfExists();
