@@ -24,11 +24,38 @@ namespace SimpleBlobStorageDemo
             //create a container:
 
             //Create a unique name for the container
-            string containerName = "images-" + Guid.NewGuid().ToString();
+            string containerName = "images";
 
-            // Create the container and return a container client object
-            var containerClient = await blobServiceClient.CreateBlobContainerAsync(containerName);
+            // Create the container if it doesn't exist
+            var exists = false;
+            var containers = blobServiceClient.GetBlobContainers().AsPages();
+            foreach (var containerPage in containers)
+            {
+                foreach (var containerItem in containerPage.Values)
+                {
+                    if (containerItem.Name.Equals("notes"))
+                    {
+                        exists = true;
+                        break;
+                    }
+                }
 
+                if (exists) break;
+            }
+            if (!exists)
+            {
+                blobServiceClient.CreateBlobContainer(containerName);
+            }
+            var containerClient = blobServiceClient.GetBlobContainerClient(containerName);
+            // Create a local file in the ./data/ directory for uploading and downloading
+
+            
+            //upload
+            var path = "./images/puertovallarta.jpg";
+            var blobClient = containerClient.GetBlobClient("beach.jpg");
+            var fileBytes = File.ReadAllBytes(path);
+            var ms = new MemoryStream(fileBytes);
+            blobClient.Upload(ms, overwrite: true);
 
         }
 
