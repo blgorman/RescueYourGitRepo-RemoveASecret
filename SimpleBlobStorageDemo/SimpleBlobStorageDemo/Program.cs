@@ -71,10 +71,12 @@ namespace SimpleBlobStorageDemo
             }
 
             //delete blob
+            //TODO: Prompt and respond if want to delete:
             blobClient = containerClient.GetBlobClient(fileName);
             //blobClient.DeleteIfExists();
 
             //delete container
+            //TODO: Prompt and respond if want to delete container:
             //containerClient.DeleteIfExists();
         }
 
