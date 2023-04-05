@@ -52,7 +52,7 @@ namespace SimpleBlobStorageDemo
 
             //upload
             string fileName = "beach.jpg";
-            var path = "./images/puertovallarta.jpg";
+            var path = "./images/pexels-travis-rupert-1032650.jpg";
             var blobClient = containerClient.GetBlobClient(fileName);
             var fileBytes = File.ReadAllBytes(path);
             var ms = new MemoryStream(fileBytes);
