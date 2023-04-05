@@ -69,6 +69,13 @@ namespace SimpleBlobStorageDemo
                 
                 //TODO: download to local directory
             }
+
+            //delete blob
+            blobClient = containerClient.GetBlobClient(fileName);
+            blobClient.DeleteIfExists();
+
+            //delete container
+            //containerClient.DeleteIfExists();
         }
 
         private static void BuildOptions()
