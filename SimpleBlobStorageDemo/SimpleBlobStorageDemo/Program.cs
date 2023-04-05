@@ -49,14 +49,26 @@ namespace SimpleBlobStorageDemo
             var containerClient = blobServiceClient.GetBlobContainerClient(containerName);
             // Create a local file in the ./data/ directory for uploading and downloading
 
-            
+
             //upload
+            string fileName = "beach.jpg";
             var path = "./images/puertovallarta.jpg";
-            var blobClient = containerClient.GetBlobClient("beach.jpg");
+            var blobClient = containerClient.GetBlobClient(fileName);
             var fileBytes = File.ReadAllBytes(path);
             var ms = new MemoryStream(fileBytes);
             blobClient.Upload(ms, overwrite: true);
 
+            //get blob
+            if (exists)
+            {
+                blobClient = containerClient.GetBlobClient(fileName);
+                Console.WriteLine($"Blob {blobClient.Name} exists at {blobClient.Uri}");
+                var downloadFileStream = new MemoryStream();
+                blobClient.DownloadTo(downloadFileStream);
+                var downloadFileBytes = downloadFileStream.ToArray();
+                
+                //TODO: download to local directory
+            }
         }
 
         private static void BuildOptions()
